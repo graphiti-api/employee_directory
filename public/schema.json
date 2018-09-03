@@ -128,6 +128,102 @@
         }
       },
       "relationships": {
+        "positions": {
+          "type": "has_many",
+          "resource": "PositionResource"
+        }
+      }
+    },
+    {
+      "name": "PositionResource",
+      "type": "positions",
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true
+        },
+        "employee_id": {
+          "type": "integer",
+          "readable": false,
+          "writable": true
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true
+        },
+        "active": {
+          "type": "boolean",
+          "readable": true,
+          "writable": true
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "employee_id": {
+        },
+        "title": {
+        },
+        "historical_index": {
+        },
+        "active": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "employee_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "active": {
+          "type": "boolean",
+          "operators": [
+            "eq"
+          ],
+          "single": true
+        }
+      },
+      "relationships": {
+        "employee": {
+          "type": "belongs_to",
+          "resource": "EmployeeResource"
+        }
       }
     }
   ],
@@ -148,6 +244,25 @@
         },
         "destroy": {
           "resource": "EmployeeResource"
+        }
+      }
+    },
+    "/api/v1/positions": {
+      "actions": {
+        "index": {
+          "resource": "PositionResource"
+        },
+        "show": {
+          "resource": "PositionResource"
+        },
+        "create": {
+          "resource": "PositionResource"
+        },
+        "update": {
+          "resource": "PositionResource"
+        },
+        "destroy": {
+          "resource": "PositionResource"
         }
       }
     }

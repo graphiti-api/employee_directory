@@ -22,7 +22,6 @@ RSpec.describe "employees#create", type: :request do
       expect {
         make_request
       }.to change { Employee.count }.by(1)
-      employee = Employee.last
       expect(response.status).to eq(201)
     end
   end

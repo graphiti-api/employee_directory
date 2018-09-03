@@ -3,10 +3,16 @@ FactoryBot.define do
     employee
 
     title { Faker::Job.title }
-    historical_index { 1 }
 
-    before(:create) do |position|
-      position.historical_index ||= position.employee.positions.count + 1
+    after(:create) do |position|
+      unless position.historical_index
+        scope = Position
+          .where(employee_id: position.employee.id)
+          .order(created_at: :desc)
+        scope.each_with_index do |p, index|
+          p.update_attribute(:historical_index, index + 1)
+        end
+      end
     end
   end
 end
