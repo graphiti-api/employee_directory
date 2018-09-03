@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
+    resources :positions
     resources :employees
     # your routes go here
   end

@@ -4,4 +4,6 @@ class EmployeeResource < ApplicationResource
   attribute :age, :integer
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
+
+  has_many :positions
 end
