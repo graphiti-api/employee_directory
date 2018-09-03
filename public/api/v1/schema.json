@@ -3,16 +3,19 @@
     {
       "name": "DepartmentResource",
       "type": "departments",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "name": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -54,6 +57,149 @@
       "relationships": {
         "positions": {
           "type": "has_many",
+          "description": null,
+          "resource": "PositionResource"
+        }
+      }
+    },
+    {
+      "name": "EmployeeResource",
+      "type": "employees",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "first_name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "last_name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "age": {
+          "type": "integer",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "created_at": {
+          "type": "datetime",
+          "readable": true,
+          "writable": false,
+          "description": null
+        },
+        "updated_at": {
+          "type": "datetime",
+          "readable": true,
+          "writable": false,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "first_name": {
+        },
+        "last_name": {
+        },
+        "age": {
+        },
+        "created_at": {
+        },
+        "updated_at": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "first_name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "last_name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "age": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "created_at": {
+          "type": "datetime",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "updated_at": {
+          "type": "datetime",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        }
+      },
+      "relationships": {
+        "positions": {
+          "type": "has_many",
+          "description": null,
           "resource": "PositionResource"
         }
       }
@@ -61,31 +207,37 @@
     {
       "name": "PositionResource",
       "type": "positions",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "employee_id": {
           "type": "integer",
           "readable": false,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "department_id": {
           "type": "integer",
           "readable": false,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "title": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "active": {
           "type": "boolean",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -164,145 +316,13 @@
       "relationships": {
         "employee": {
           "type": "belongs_to",
+          "description": null,
           "resource": "EmployeeResource"
         },
         "department": {
           "type": "belongs_to",
+          "description": null,
           "resource": "DepartmentResource"
-        }
-      }
-    },
-    {
-      "name": "EmployeeResource",
-      "type": "employees",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "first_name": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        },
-        "last_name": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        },
-        "age": {
-          "type": "integer",
-          "readable": true,
-          "writable": true
-        },
-        "created_at": {
-          "type": "datetime",
-          "readable": true,
-          "writable": false
-        },
-        "updated_at": {
-          "type": "datetime",
-          "readable": true,
-          "writable": false
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "first_name": {
-        },
-        "last_name": {
-        },
-        "age": {
-        },
-        "created_at": {
-        },
-        "updated_at": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "first_name": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        },
-        "last_name": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        },
-        "age": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "created_at": {
-          "type": "datetime",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "updated_at": {
-          "type": "datetime",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        }
-      },
-      "relationships": {
-        "positions": {
-          "type": "has_many",
-          "resource": "PositionResource"
         }
       }
     }
@@ -327,25 +347,6 @@
         }
       }
     },
-    "/api/v1/positions": {
-      "actions": {
-        "index": {
-          "resource": "PositionResource"
-        },
-        "show": {
-          "resource": "PositionResource"
-        },
-        "create": {
-          "resource": "PositionResource"
-        },
-        "update": {
-          "resource": "PositionResource"
-        },
-        "destroy": {
-          "resource": "PositionResource"
-        }
-      }
-    },
     "/api/v1/employees": {
       "actions": {
         "index": {
@@ -364,12 +365,43 @@
           "resource": "EmployeeResource"
         }
       }
+    },
+    "/api/v1/positions": {
+      "actions": {
+        "index": {
+          "resource": "PositionResource"
+        },
+        "show": {
+          "resource": "PositionResource"
+        },
+        "create": {
+          "resource": "PositionResource"
+        },
+        "update": {
+          "resource": "PositionResource"
+        },
+        "destroy": {
+          "resource": "PositionResource"
+        }
+      }
     }
   },
   "types": {
     "integer_id": {
       "kind": "scalar",
       "description": "Base Type. Query/persist as integer, render as string."
+    },
+    "uuid": {
+      "kind": "scalar",
+      "description": "Base Type. Like a normal string, but by default only eq/!eq and case-sensitive."
+    },
+    "string_enum": {
+      "kind": "scalar",
+      "description": "String enum type. Like a normal string, but only eq/!eq and case-sensitive. Limited to only the allowed values."
+    },
+    "integer_enum": {
+      "kind": "scalar",
+      "description": "Integer enum type. Like a normal integer, but only eq/!eq filters. Limited to only the allowed values."
     },
     "string": {
       "kind": "scalar",
@@ -408,6 +440,18 @@
       "description": "Base Type."
     },
     "array_of_integer_ids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_uuids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_string_enums": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integer_enums": {
       "kind": "array",
       "description": "Base Type."
     },

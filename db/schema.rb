@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2018_09_04_120042) do
-
   create_table "departments", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -37,5 +36,4 @@ ActiveRecord::Schema.define(version: 2018_09_04_120042) do
     t.index ["department_id"], name: "index_positions_on_department_id"
     t.index ["employee_id"], name: "index_positions_on_employee_id"
   end
-
 end
