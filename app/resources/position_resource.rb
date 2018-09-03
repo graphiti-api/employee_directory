@@ -7,4 +7,8 @@ class PositionResource < ApplicationResource
 
   belongs_to :employee
   belongs_to :department
+
+  filter :current, :boolean do
+    eq { |scope, value| scope.current(value) }
+  end
 end

@@ -189,6 +189,26 @@ RSpec.describe EmployeeResource, type: :resource do
   end
 
   describe 'sideloading' do
-    # ... your tests ...
+    let!(:employee) { create(:employee) }
+
+    describe 'current_position' do
+      let!(:pos1) do
+        create(:position, employee: employee, historical_index: 2)
+      end
+      let!(:pos2) do
+        create(:position, employee: employee, historical_index: 1)
+      end
+
+      before do
+        params[:include] = 'current_position'
+      end
+
+      it 'returns position with historical index == 1' do
+        render
+        sl = d[0].sideload(:current_position)
+        expect(sl.jsonapi_type).to eq('positions')
+        expect(sl.id).to eq(pos2.id)
+      end
+    end
   end
 end
