@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 
 module EmployeeDirectory
   class Application < Rails::Application
+    routes.default_url_options[:host] = ENV.fetch('HOST', 'http://localhost:3000')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
