@@ -221,6 +221,8 @@
         "created_at": {
         },
         "updated_at": {
+        },
+        "title": {
         }
       },
       "filters": {
@@ -296,6 +298,12 @@
             "gte",
             "lt",
             "lte"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq"
           ]
         }
       },
