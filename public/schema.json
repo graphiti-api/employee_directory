@@ -159,6 +159,13 @@
             "eq"
           ],
           "single": true
+        },
+        "current": {
+          "type": "boolean",
+          "operators": [
+            "eq"
+          ],
+          "single": true
         }
       },
       "relationships": {
@@ -312,6 +319,10 @@
       "relationships": {
         "positions": {
           "type": "has_many",
+          "resource": "PositionResource"
+        },
+        "current_position": {
+          "type": "has_one",
           "resource": "PositionResource"
         }
       }

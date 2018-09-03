@@ -7,6 +7,11 @@ class EmployeeResource < ApplicationResource
   attribute :title, :string, only: [:filterable, :sortable]
 
   has_many :positions
+  has_one :current_position, resource: PositionResource do
+    params do |hash|
+      hash[:filter][:current] = true
+    end
+  end
 
   filter :title, only: [:eq] do
     eq do |scope, value|

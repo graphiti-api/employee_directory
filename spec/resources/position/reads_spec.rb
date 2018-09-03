@@ -35,6 +35,20 @@ RSpec.describe PositionResource, type: :resource do
         expect(d.map(&:id)).to eq([position2.id])
       end
     end
+
+    context 'by current' do
+      let!(:position1) { create(:position, historical_index: 2) }
+      let!(:position2) { create(:position, historical_index: 1) }
+
+      before do
+        params[:filter] = { current: true }
+      end
+
+      it 'only returns positions where historical index == 1' do
+        render
+        expect(d.map(&:id)).to eq([position2.id])
+      end
+    end
   end
 
   describe 'sorting' do
