@@ -1,6 +1,178 @@
 {
   "resources": [
     {
+      "name": "DepartmentResource",
+      "type": "departments",
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "positions": {
+          "type": "has_many",
+          "resource": "PositionResource"
+        }
+      }
+    },
+    {
+      "name": "PositionResource",
+      "type": "positions",
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true
+        },
+        "employee_id": {
+          "type": "integer",
+          "readable": false,
+          "writable": true
+        },
+        "department_id": {
+          "type": "integer",
+          "readable": false,
+          "writable": true
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true
+        },
+        "active": {
+          "type": "boolean",
+          "readable": true,
+          "writable": true
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "employee_id": {
+        },
+        "department_id": {
+        },
+        "title": {
+        },
+        "historical_index": {
+        },
+        "active": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "employee_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "department_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "active": {
+          "type": "boolean",
+          "operators": [
+            "eq"
+          ],
+          "single": true
+        }
+      },
+      "relationships": {
+        "employee": {
+          "type": "belongs_to",
+          "resource": "EmployeeResource"
+        },
+        "department": {
+          "type": "belongs_to",
+          "resource": "DepartmentResource"
+        }
+      }
+    },
+    {
       "name": "EmployeeResource",
       "type": "employees",
       "attributes": {
@@ -133,117 +305,25 @@
           "resource": "PositionResource"
         }
       }
-    },
-    {
-      "name": "PositionResource",
-      "type": "positions",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "employee_id": {
-          "type": "integer",
-          "readable": false,
-          "writable": true
-        },
-        "title": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        },
-        "active": {
-          "type": "boolean",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "employee_id": {
-        },
-        "title": {
-        },
-        "historical_index": {
-        },
-        "active": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "employee_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "title": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        },
-        "active": {
-          "type": "boolean",
-          "operators": [
-            "eq"
-          ],
-          "single": true
-        }
-      },
-      "relationships": {
-        "employee": {
-          "type": "belongs_to",
-          "resource": "EmployeeResource"
-        }
-      }
     }
   ],
   "endpoints": {
-    "/api/v1/employees": {
+    "/api/v1/departments": {
       "actions": {
         "index": {
-          "resource": "EmployeeResource"
+          "resource": "DepartmentResource"
         },
         "show": {
-          "resource": "EmployeeResource"
+          "resource": "DepartmentResource"
         },
         "create": {
-          "resource": "EmployeeResource"
+          "resource": "DepartmentResource"
         },
         "update": {
-          "resource": "EmployeeResource"
+          "resource": "DepartmentResource"
         },
         "destroy": {
-          "resource": "EmployeeResource"
+          "resource": "DepartmentResource"
         }
       }
     },
@@ -263,6 +343,25 @@
         },
         "destroy": {
           "resource": "PositionResource"
+        }
+      }
+    },
+    "/api/v1/employees": {
+      "actions": {
+        "index": {
+          "resource": "EmployeeResource"
+        },
+        "show": {
+          "resource": "EmployeeResource"
+        },
+        "create": {
+          "resource": "EmployeeResource"
+        },
+        "update": {
+          "resource": "EmployeeResource"
+        },
+        "destroy": {
+          "resource": "EmployeeResource"
         }
       }
     }

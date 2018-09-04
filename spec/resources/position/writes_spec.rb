@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe PositionResource, type: :resource do
   describe 'creating' do
     let!(:employee) { create(:employee) }
+    let!(:department) { create(:department) }
 
     let(:payload) do
       {
@@ -14,6 +15,12 @@ RSpec.describe PositionResource, type: :resource do
               data: {
                 id: employee.id.to_s,
                 type: 'employees'
+              }
+            },
+            department: {
+              data: {
+                id: department.id.to_s,
+                type: 'departments'
               }
             }
           }
