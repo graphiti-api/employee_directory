@@ -8,6 +8,7 @@ class EmployeeResource < ApplicationResource
 
   has_many :positions
   many_to_many :teams
+  polymorphic_has_many :notes, as: :notable
   has_one :current_position, resource: PositionResource do
     params do |hash|
       hash[:filter][:current] = true

@@ -4,4 +4,5 @@ class TeamResource < ApplicationResource
 
   belongs_to :department
   many_to_many :employees
+  polymorphic_has_many :notes, as: :notable
 end
