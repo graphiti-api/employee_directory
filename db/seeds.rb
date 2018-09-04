@@ -1,4 +1,4 @@
-[Employee, Position].each(&:delete_all)
+[Employee, Position, Department].each(&:delete_all)
 
 engineering = Department.create! name: 'Engineering'
 safety = Department.create! name: 'Safety'

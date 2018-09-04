@@ -7,6 +7,7 @@ RSpec.describe "positions#create", type: :request do
 
   describe 'basic create' do
     let!(:employee) { create(:employee) }
+    let!(:department) { create(:department) }
 
     let(:payload) do
       {
@@ -18,6 +19,12 @@ RSpec.describe "positions#create", type: :request do
               data: {
                 id: employee.id.to_s,
                 type: 'employees'
+              }
+            },
+            department: {
+              data: {
+                id: department.id.to_s,
+                type: 'departments'
               }
             }
           }
