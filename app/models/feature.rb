@@ -1,0 +1,2 @@
+class Feature < Task
+end

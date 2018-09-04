@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_141521) do
+ActiveRecord::Schema.define(version: 2018_09_04_143830) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2018_09_04_141521) do
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.integer "epic_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["epic_id"], name: "index_milestones_on_epic_id"
   end
 
   create_table "notes", force: :cascade do |t|
@@ -45,6 +53,18 @@ ActiveRecord::Schema.define(version: 2018_09_04_141521) do
     t.integer "department_id"
     t.index ["department_id"], name: "index_positions_on_department_id"
     t.index ["employee_id"], name: "index_positions_on_employee_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "team_id"
+    t.string "type"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_tasks_on_employee_id"
+    t.index ["team_id"], name: "index_tasks_on_team_id"
+    t.index ["type"], name: "index_tasks_on_type"
   end
 
   create_table "team_memberships", force: :cascade do |t|
