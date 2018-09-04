@@ -7,6 +7,7 @@ class EmployeeResource < ApplicationResource
   attribute :title, :string, only: [:filterable, :sortable]
 
   has_many :positions
+  many_to_many :teams
   has_one :current_position, resource: PositionResource do
     params do |hash|
       hash[:filter][:current] = true
