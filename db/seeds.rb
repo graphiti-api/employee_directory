@@ -3,7 +3,8 @@
   Position,
   Department,
   TeamMembership,
-  Team
+  Team,
+  Note
 ].each(&:delete_all)
 
 departments = []
