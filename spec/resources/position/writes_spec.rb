@@ -4,6 +4,8 @@ RSpec.describe PositionResource, type: :resource do
   describe 'creating' do
     let!(:employee) { create(:employee) }
     let!(:department) { create(:department) }
+    let!(:least_recent) { create(:position, employee: employee) }
+    let!(:most_recent) { create(:position, employee: employee) }
 
     let(:payload) do
       {
@@ -32,10 +34,14 @@ RSpec.describe PositionResource, type: :resource do
       PositionResource.build(payload)
     end
 
-    it 'works' do
+    it 'works, updating historical indices' do
       expect {
         expect(instance.save).to eq(true)
       }.to change { Position.count }.by(1)
+      position = Position.last
+      expect(position.historical_index).to eq(1)
+      expect(most_recent.reload.historical_index).to eq(2)
+      expect(least_recent.reload.historical_index).to eq(3)
     end
   end
 
@@ -69,16 +75,21 @@ RSpec.describe PositionResource, type: :resource do
   end
 
   describe 'destroying' do
-    let!(:position) { create(:position) }
+    let!(:employee) { create(:employee) }
+    let!(:position1) do
+      create(:position, employee: employee, historical_index: 2)
+    end
+    let!(:position2) { create(:position, employee: employee) }
 
     let(:instance) do
-      PositionResource.find(id: position.id)
+      PositionResource.find(id: position2.id)
     end
 
-    it 'works' do
+    it 'works, updating historical indices' do
       expect {
         expect(instance.destroy).to eq(true)
       }.to change { Position.count }.by(-1)
+      expect(position1.reload.historical_index).to eq(1)
     end
   end
 end
