@@ -1,5 +1,10 @@
 [Employee, Position].each(&:delete_all)
 
+engineering = Department.create! name: 'Engineering'
+safety = Department.create! name: 'Safety'
+qa = Department.create! name: 'QA'
+departments = [engineering, safety, qa]
+
 100.times do
   employee = Employee.create! first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -8,6 +13,7 @@
   (1..2).each do |i|
     employee.positions.create! title: Faker::Job.title,
       historical_index: i,
-      active: i == 1
+      active: i == 1,
+      department: departments.sample
   end
 end
