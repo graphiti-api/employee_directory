@@ -7,6 +7,7 @@ class EmployeeResource < ApplicationResource
   attribute :title, :string, only: [:filterable, :sortable]
 
   has_many :positions
+  has_many :tasks
   many_to_many :teams
   polymorphic_has_many :notes, as: :notable
   has_one :current_position, resource: PositionResource do
