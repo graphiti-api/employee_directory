@@ -9,8 +9,10 @@
 departments = []
 def create_department(name)
   dept = Department.create! name: name
-  dept.teams.create!(name: 'Engineering Team B')
+  team = dept.teams.create!(name: 'Engineering Team B')
+  team.notes.create!(body: Faker::Lorem.sentence)
   dept.teams.create!(name: 'Engineering Team C')
+  dept.notes.create!(body: Faker::Lorem.sentence)
   dept
 end
 
@@ -31,4 +33,5 @@ departments << create_department('QA')
   end
 
   employee.teams << employee.positions[0].department.teams.sample
+  employee.notes.create!(body: Faker::Lorem.sentence)
 end
