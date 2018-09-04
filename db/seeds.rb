@@ -4,7 +4,9 @@
   Department,
   TeamMembership,
   Team,
-  Note
+  Note,
+  Task,
+  Milestone
 ].each(&:delete_all)
 
 departments = []
@@ -35,4 +37,10 @@ departments << create_department('QA')
 
   employee.teams << employee.positions[0].department.teams.sample
   employee.notes.create!(body: Faker::Lorem.sentence)
+
+  team = employee.teams.first
+  employee.bugs.create!(title: Faker::Lorem.sentence, team: team)
+  employee.features.create!(title: Faker::Lorem.sentence, team: team)
+  epic = employee.epics.create!(title: Faker::Lorem.sentence, team: team)
+  epic.milestones.create!(name: Faker::Lorem.word.titleize)
 end
