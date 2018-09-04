@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :team do
-    name "MyString"
+    department
+
+    name { Faker::Lorem.word }
   end
 end

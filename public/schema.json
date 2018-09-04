@@ -55,6 +55,10 @@
         "positions": {
           "type": "has_many",
           "resource": "PositionResource"
+        },
+        "teams": {
+          "type": "has_many",
+          "resource": "TeamResource"
         }
       }
     },
@@ -314,6 +318,17 @@
           "operators": [
             "eq"
           ]
+        },
+        "team_id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
         }
       },
       "relationships": {
@@ -321,9 +336,97 @@
           "type": "has_many",
           "resource": "PositionResource"
         },
+        "teams": {
+          "type": "many_to_many",
+          "resource": "TeamResource"
+        },
         "current_position": {
           "type": "has_one",
           "resource": "PositionResource"
+        }
+      }
+    },
+    {
+      "name": "TeamResource",
+      "type": "teams",
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "department_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "employee_id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        }
+      },
+      "relationships": {
+        "department": {
+          "type": "belongs_to",
+          "resource": "DepartmentResource"
+        },
+        "employees": {
+          "type": "many_to_many",
+          "resource": "EmployeeResource"
         }
       }
     }
@@ -383,6 +486,25 @@
         },
         "destroy": {
           "resource": "EmployeeResource"
+        }
+      }
+    },
+    "/api/v1/teams": {
+      "actions": {
+        "index": {
+          "resource": "TeamResource"
+        },
+        "show": {
+          "resource": "TeamResource"
+        },
+        "create": {
+          "resource": "TeamResource"
+        },
+        "update": {
+          "resource": "TeamResource"
+        },
+        "destroy": {
+          "resource": "TeamResource"
         }
       }
     }
