@@ -211,6 +211,11 @@
           "type": "has_many",
           "description": null,
           "resource": "PositionResource"
+        },
+        "current_position": {
+          "type": "has_one",
+          "description": null,
+          "resource": "PositionResource"
         }
       }
     },
@@ -316,6 +321,13 @@
           ]
         },
         "active": {
+          "type": "boolean",
+          "operators": [
+            "eq"
+          ],
+          "single": true
+        },
+        "current": {
           "type": "boolean",
           "operators": [
             "eq"
