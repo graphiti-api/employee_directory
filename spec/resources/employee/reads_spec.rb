@@ -141,6 +141,51 @@ RSpec.describe EmployeeResource, type: :resource do
         end
       end
     end
+
+    describe 'by department name' do
+      let!(:employee1) { create(:employee) }
+      let!(:employee2) { create(:employee) }
+      let!(:pos1) do
+        create(:position, employee: employee1, department: department1)
+      end
+      let!(:pos2) do
+        create :position,
+          employee: employee2,
+          department: department2,
+          historical_index: 2
+      end
+      let!(:pos3) do
+        create :position,
+          employee: employee2,
+          department: department3
+      end
+
+      let!(:department1) { create(:department, name: 'z') }
+      let!(:department2) { create(:department, name: 'a') }
+      let!(:department3) { create(:department, name: 'b') }
+
+      context 'when asc' do
+        before do
+          params[:sort] = 'department_name'
+        end
+
+        it 'works' do
+          render
+          expect(d.map(&:id)).to eq([employee2.id, employee1.id])
+        end
+      end
+
+      context 'when desc' do
+        before do
+          params[:sort] = '-department_name'
+        end
+
+        it 'works' do
+          render
+          expect(d.map(&:id)).to eq([employee1.id, employee2.id])
+        end
+      end
+    end
   end
 
   describe 'sideloading' do

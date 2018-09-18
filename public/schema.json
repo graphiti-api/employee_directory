@@ -223,6 +223,8 @@
         "updated_at": {
         },
         "title": {
+        },
+        "department_name": {
         }
       },
       "filters": {
