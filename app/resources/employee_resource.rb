@@ -17,4 +17,9 @@ class EmployeeResource < ApplicationResource
   sort :title do |scope, value|
     scope.joins(:current_position).merge(Position.order(title: value))
   end
+
+  sort :department_name, :string do |scope, value|
+    scope.joins(current_position: :department)
+      .merge(Department.order(name: value))
+  end
 end
