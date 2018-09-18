@@ -10,9 +10,7 @@ RSpec.describe "departments#create", type: :request do
       {
         data: {
           type: 'departments',
-          attributes: {
-            # ... your attrs here
-          }
+          attributes: attributes_for(:department)
         }
       }
     end

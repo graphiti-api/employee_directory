@@ -13,7 +13,7 @@ RSpec.describe "positions#create", type: :request do
       {
         data: {
           type: 'positions',
-          attributes: { },
+          attributes: attributes_for(:position),
           relationships: {
             employee: {
               data: {

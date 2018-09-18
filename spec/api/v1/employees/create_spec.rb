@@ -10,9 +10,7 @@ RSpec.describe "employees#create", type: :request do
       {
         data: {
           type: 'employees',
-          attributes: {
-            # ... your attrs here
-          }
+          attributes: attributes_for(:employee)
         }
       }
     end

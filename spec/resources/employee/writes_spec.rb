@@ -6,7 +6,11 @@ RSpec.describe EmployeeResource, type: :resource do
       {
         data: {
           type: 'employees',
-          attributes: { }
+          attributes: {
+            first_name: 'fname',
+            last_name: 'lname',
+            age: 67
+          }
         }
       }
     end
@@ -19,6 +23,10 @@ RSpec.describe EmployeeResource, type: :resource do
       expect {
         expect(instance.save).to eq(true)
       }.to change { Employee.count }.by(1)
+      employee = Employee.last
+      expect(employee.first_name).to eq('fname')
+      expect(employee.last_name).to eq('lname')
+      expect(employee.age).to eq(67)
     end
   end
 

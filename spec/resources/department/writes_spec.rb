@@ -6,7 +6,7 @@ RSpec.describe DepartmentResource, type: :resource do
       {
         data: {
           type: 'departments',
-          attributes: { }
+          attributes: { name: 'dept' }
         }
       }
     end
@@ -19,6 +19,8 @@ RSpec.describe DepartmentResource, type: :resource do
       expect {
         expect(instance.save).to eq(true)
       }.to change { Department.count }.by(1)
+      department = Department.last
+      expect(department.name).to eq('dept')
     end
   end
 

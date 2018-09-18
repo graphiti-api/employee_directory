@@ -11,7 +11,7 @@ RSpec.describe PositionResource, type: :resource do
       {
         data: {
           type: 'positions',
-          attributes: { },
+          attributes: { title: 'mytitle' },
           relationships: {
             employee: {
               data: {
@@ -39,6 +39,7 @@ RSpec.describe PositionResource, type: :resource do
         expect(instance.save).to eq(true)
       }.to change { Position.count }.by(1)
       position = Position.last
+      expect(position.title).to eq('mytitle')
       expect(position.historical_index).to eq(1)
       expect(most_recent.reload.historical_index).to eq(2)
       expect(least_recent.reload.historical_index).to eq(3)
