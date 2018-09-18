@@ -8,3 +8,5 @@ $ bin/rails s
 ```
 
 You should probably follow the [Tutorial](https://graphiti-api.github.io/graphiti/tutorial)
+
+Goes with [client-side Vue application](https://github.com/graphiti-api/employee-directory-vue)
