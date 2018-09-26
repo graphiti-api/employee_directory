@@ -44,14 +44,14 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'graphiti'
+gem 'graphiti', '1.0.beta.8'
 gem 'kaminari', '~> 1.0'
 gem 'responders', '~> 2.4'
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'faker', '~> 1.7'
-  gem 'graphiti_spec_helpers'
+  gem 'graphiti_spec_helpers', '1.0.beta.3'
 end
 
 group :test do
