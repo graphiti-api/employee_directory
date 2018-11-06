@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.3.8
+- 2.4.5
+- 2.5.3
+bundler_args: --jobs=2
+script:
+script:
+  - bundle exec rake db:setup
+  - bundle exec rake spec
+cache: bundler
+services:
+  - postgresql
+addons:
+  postgresql: "9.5"
