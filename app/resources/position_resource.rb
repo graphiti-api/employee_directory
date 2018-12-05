@@ -1,5 +1,5 @@
 class PositionResource < ApplicationResource
-  attribute :employee_id, :integer, readable: false
+  attribute :employee_id, :uuid, readable: false
   attribute :department_id, :integer, readable: false
   attribute :title, :string
   attribute :historical_index, :integer, only: [:sortable]
