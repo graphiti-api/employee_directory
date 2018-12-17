@@ -16,6 +16,13 @@ class EmployeeResource < ApplicationResource
     end
   end
 
+  # GET /api/v1/employees?filter[combo]={"foo":1,"bar":2},{"foo":3,"bar":4}
+  filter :combo, :hash, only: [:eq] do
+    eq do |scope, value|
+      value # => [{ 'foo' => 1, 'bar' => 2 }, { 'foo' => 3, 'bar' => 4 }]
+    end
+  end
+
   filter :title, only: [:eq] do
     eq do |scope, value|
       scope.joins(:current_position).merge(Position.where(title: value))
