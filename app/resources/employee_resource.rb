@@ -1,4 +1,21 @@
 class EmployeeResource < ApplicationResource
+  attribute :id, :integer_id do
+    if @object.id == 1
+      'c29saWNpdGF0aW9uLTEyMTEwMzY='
+    else
+      @object.id
+    end
+  end
+
+  attribute :foo, :string, only: [:readable] do
+    'asdfasfds'
+  end
+
+  attribute :bar, :string, only: [:readable] do
+    'jyhgbsdfdsf'
+  end
+
+
   attribute :first_name, :string
   attribute :last_name, :string
   attribute :age, :integer

@@ -1,76 +1,21 @@
 {
   "resources": [
     {
-      "name": "PostResource",
-      "type": "posts",
+      "name": "BugResource",
+      "type": "bugs",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "title": {
           "type": "string",
           "readable": true,
-          "writable": true
-        },
-        "likes": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "title": {
-        },
-        "likes": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "title": {
-          "type": "string",
-          "operators": [
-            "eq"
-          ]
-        },
-        "likes": {
-          "type": "string",
-          "operators": [
-            "eq"
-          ]
-        }
-      },
-      "relationships": {
-      }
-    },
-    {
-      "name": "TaskResource",
-      "type": "tasks",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "title": {
-          "type": "string",
-          "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -134,10 +79,12 @@
       "relationships": {
         "employee": {
           "type": "belongs_to",
+          "description": null,
           "resource": "EmployeeResource"
         },
         "team": {
           "type": "belongs_to",
+          "description": null,
           "resource": "TeamResource"
         }
       },
@@ -149,48 +96,129 @@
       ]
     },
     {
-      "name": "EmployeeResource",
-      "type": "employees",
+      "name": "DepartmentResource",
+      "type": "departments",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "positions": {
+          "type": "has_many",
+          "description": null,
+          "resource": "PositionResource"
+        },
+        "teams": {
+          "type": "has_many",
+          "description": null,
+          "resource": "TeamResource"
+        },
+        "notes": {
+          "type": "has_many",
+          "description": null,
+          "resource": "NoteResource"
+        }
+      }
+    },
+    {
+      "name": "EmployeeResource",
+      "type": "employees",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
         },
         "foo": {
           "type": "string",
           "readable": true,
-          "writable": false
+          "writable": false,
+          "description": null
         },
         "bar": {
           "type": "string",
           "readable": true,
-          "writable": false
+          "writable": false,
+          "description": null
         },
         "first_name": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "last_name": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "age": {
           "type": "integer",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "created_at": {
           "type": "datetime",
           "readable": true,
-          "writable": false
+          "writable": false,
+          "description": null
         },
         "updated_at": {
           "type": "datetime",
           "readable": true,
-          "writable": false
+          "writable": false,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -309,54 +337,449 @@
       "relationships": {
         "positions": {
           "type": "has_many",
+          "description": null,
           "resource": "PositionResource"
         },
         "tasks": {
           "type": "has_many",
+          "description": null,
           "resource": "TaskResource"
         },
         "teams": {
           "type": "many_to_many",
+          "description": null,
           "resource": "TeamResource"
         },
         "notes": {
           "type": "has_many",
+          "description": null,
           "resource": "NoteResource"
         },
         "current_position": {
           "type": "has_one",
+          "description": null,
           "resource": "PositionResource"
+        }
+      }
+    },
+    {
+      "name": "EpicResource",
+      "type": "epics",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "title": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "employee_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "team_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "employee": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "EmployeeResource"
+        },
+        "team": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "TeamResource"
+        },
+        "milestones": {
+          "type": "has_many",
+          "description": null,
+          "resource": "MilestoneResource"
+        }
+      },
+      "polymorphic": true,
+      "children": [
+        "FeatureResource",
+        "BugResource",
+        "EpicResource"
+      ]
+    },
+    {
+      "name": "FeatureResource",
+      "type": "features",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "points": {
+          "type": "integer",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "title": {
+        },
+        "points": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "employee_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "team_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "points": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        }
+      },
+      "relationships": {
+        "employee": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "EmployeeResource"
+        },
+        "team": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "TeamResource"
+        }
+      },
+      "polymorphic": true,
+      "children": [
+        "FeatureResource",
+        "BugResource",
+        "EpicResource"
+      ]
+    },
+    {
+      "name": "MilestoneResource",
+      "type": "milestones",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "epic_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "epic": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "EpicResource"
+        }
+      }
+    },
+    {
+      "name": "NoteResource",
+      "type": "notes",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "body": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "body": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "notable_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "notable_type": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ],
+          "allow": [
+            "Employee",
+            "Department",
+            "Team"
+          ]
+        }
+      },
+      "relationships": {
+        "notable": {
+          "type": "polymorphic_belongs_to",
+          "description": null,
+          "resources": [
+            "EmployeeResource",
+            "TeamResource",
+            "DepartmentResource"
+          ]
         }
       }
     },
     {
       "name": "PositionResource",
       "type": "positions",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "employee_id": {
           "type": "integer",
           "readable": false,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "department_id": {
           "type": "integer",
           "readable": false,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "title": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "active": {
           "type": "boolean",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -442,27 +865,38 @@
       "relationships": {
         "employee": {
           "type": "belongs_to",
+          "description": null,
           "resource": "EmployeeResource"
         },
         "department": {
           "type": "belongs_to",
+          "description": null,
           "resource": "DepartmentResource"
         }
       }
     },
     {
-      "name": "DepartmentResource",
-      "type": "departments",
+      "name": "PostResource",
+      "type": "posts",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
-        "name": {
+        "title": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
+        },
+        "likes": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -470,7 +904,9 @@
       "sorts": {
         "id": {
         },
-        "name": {
+        "title": {
+        },
+        "likes": {
         }
       },
       "filters": {
@@ -485,7 +921,83 @@
             "lte"
           ]
         },
-        "name": {
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq"
+          ]
+        },
+        "likes": {
+          "type": "string",
+          "operators": [
+            "eq"
+          ]
+        }
+      },
+      "relationships": {
+      }
+    },
+    {
+      "name": "TaskResource",
+      "type": "tasks",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "title": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "employee_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "team_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "title": {
           "type": "string",
           "operators": [
             "eq",
@@ -502,33 +1014,40 @@
         }
       },
       "relationships": {
-        "positions": {
-          "type": "has_many",
-          "resource": "PositionResource"
+        "employee": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "EmployeeResource"
         },
-        "teams": {
-          "type": "has_many",
+        "team": {
+          "type": "belongs_to",
+          "description": null,
           "resource": "TeamResource"
-        },
-        "notes": {
-          "type": "has_many",
-          "resource": "NoteResource"
         }
-      }
+      },
+      "polymorphic": true,
+      "children": [
+        "FeatureResource",
+        "BugResource",
+        "EpicResource"
+      ]
     },
     {
       "name": "TeamResource",
       "type": "teams",
+      "description": null,
       "attributes": {
         "id": {
           "type": "integer_id",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         },
         "name": {
           "type": "string",
           "readable": true,
-          "writable": true
+          "writable": true,
+          "description": null
         }
       },
       "extra_attributes": {
@@ -592,478 +1111,123 @@
       "relationships": {
         "department": {
           "type": "belongs_to",
+          "description": null,
           "resource": "DepartmentResource"
         },
         "employees": {
           "type": "many_to_many",
+          "description": null,
           "resource": "EmployeeResource"
         },
         "tasks": {
           "type": "has_many",
+          "description": null,
           "resource": "TaskResource"
         },
         "notes": {
           "type": "has_many",
+          "description": null,
+          "resource": "NoteResource"
+        }
+      }
+    }
+  ],
+  "endpoints": {
+    "/api/v1/departments": {
+      "actions": {
+        "index": {
+          "resource": "DepartmentResource"
+        },
+        "show": {
+          "resource": "DepartmentResource"
+        },
+        "create": {
+          "resource": "DepartmentResource"
+        },
+        "update": {
+          "resource": "DepartmentResource"
+        },
+        "destroy": {
+          "resource": "DepartmentResource"
+        }
+      }
+    },
+    "/api/v1/employees": {
+      "actions": {
+        "index": {
+          "resource": "EmployeeResource"
+        },
+        "show": {
+          "resource": "EmployeeResource"
+        },
+        "create": {
+          "resource": "EmployeeResource"
+        },
+        "update": {
+          "resource": "EmployeeResource"
+        },
+        "destroy": {
+          "resource": "EmployeeResource"
+        }
+      }
+    },
+    "/api/v1/milestones": {
+      "actions": {
+        "index": {
+          "resource": "MilestoneResource"
+        },
+        "show": {
+          "resource": "MilestoneResource"
+        },
+        "create": {
+          "resource": "MilestoneResource"
+        },
+        "update": {
+          "resource": "MilestoneResource"
+        },
+        "destroy": {
+          "resource": "MilestoneResource"
+        }
+      }
+    },
+    "/api/v1/notes": {
+      "actions": {
+        "index": {
+          "resource": "NoteResource"
+        },
+        "show": {
+          "resource": "NoteResource"
+        },
+        "create": {
+          "resource": "NoteResource"
+        },
+        "update": {
+          "resource": "NoteResource"
+        },
+        "destroy": {
           "resource": "NoteResource"
         }
       }
     },
-    {
-      "name": "NoteResource",
-      "type": "notes",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
+    "/api/v1/positions": {
+      "actions": {
+        "index": {
+          "resource": "PositionResource"
         },
-        "body": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
+        "show": {
+          "resource": "PositionResource"
         },
-        "body": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
+        "create": {
+          "resource": "PositionResource"
         },
-        "notable_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
+        "update": {
+          "resource": "PositionResource"
         },
-        "body": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        },
-        "notable_type": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ],
-          "allow": [
-            "Employee",
-            "Department",
-            "Team"
-          ]
-        }
-      },
-      "relationships": {
-        "notable": {
-          "type": "polymorphic_belongs_to",
-          "resources": [
-            "EmployeeResource",
-            "TeamResource",
-            "DepartmentResource"
-          ]
+        "destroy": {
+          "resource": "PositionResource"
         }
       }
     },
-    {
-      "name": "BugResource",
-      "type": "bugs",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "title": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "title": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "employee_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "team_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "title": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        }
-      },
-      "relationships": {
-        "employee": {
-          "type": "belongs_to",
-          "resource": "EmployeeResource"
-        },
-        "team": {
-          "type": "belongs_to",
-          "resource": "TeamResource"
-        }
-      },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
-    },
-    {
-      "name": "EpicResource",
-      "type": "epics",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "title": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "title": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "employee_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "team_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "title": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        }
-      },
-      "relationships": {
-        "employee": {
-          "type": "belongs_to",
-          "resource": "EmployeeResource"
-        },
-        "team": {
-          "type": "belongs_to",
-          "resource": "TeamResource"
-        },
-        "milestones": {
-          "type": "has_many",
-          "resource": "MilestoneResource"
-        }
-      },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
-    },
-    {
-      "name": "MilestoneResource",
-      "type": "milestones",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "name": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "name": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "epic_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "name": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        }
-      },
-      "relationships": {
-        "epic": {
-          "type": "belongs_to",
-          "resource": "EpicResource"
-        }
-      }
-    },
-    {
-      "name": "FeatureResource",
-      "type": "features",
-      "attributes": {
-        "id": {
-          "type": "integer_id",
-          "readable": true,
-          "writable": true
-        },
-        "title": {
-          "type": "string",
-          "readable": true,
-          "writable": true
-        },
-        "points": {
-          "type": "integer",
-          "readable": true,
-          "writable": true
-        }
-      },
-      "extra_attributes": {
-      },
-      "sorts": {
-        "id": {
-        },
-        "title": {
-        },
-        "points": {
-        }
-      },
-      "filters": {
-        "id": {
-          "type": "integer_id",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "employee_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "team_id": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        },
-        "title": {
-          "type": "string",
-          "operators": [
-            "eq",
-            "not_eq",
-            "eql",
-            "not_eql",
-            "prefix",
-            "not_prefix",
-            "suffix",
-            "not_suffix",
-            "match",
-            "not_match"
-          ]
-        },
-        "points": {
-          "type": "integer",
-          "operators": [
-            "eq",
-            "not_eq",
-            "gt",
-            "gte",
-            "lt",
-            "lte"
-          ]
-        }
-      },
-      "relationships": {
-        "employee": {
-          "type": "belongs_to",
-          "resource": "EmployeeResource"
-        },
-        "team": {
-          "type": "belongs_to",
-          "resource": "TeamResource"
-        }
-      },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
-    }
-  ],
-  "endpoints": {
     "/api/v1/posts": {
       "actions": {
         "index": {
@@ -1102,63 +1266,6 @@
         }
       }
     },
-    "/api/v1/employees": {
-      "actions": {
-        "index": {
-          "resource": "EmployeeResource"
-        },
-        "show": {
-          "resource": "EmployeeResource"
-        },
-        "create": {
-          "resource": "EmployeeResource"
-        },
-        "update": {
-          "resource": "EmployeeResource"
-        },
-        "destroy": {
-          "resource": "EmployeeResource"
-        }
-      }
-    },
-    "/api/v1/positions": {
-      "actions": {
-        "index": {
-          "resource": "PositionResource"
-        },
-        "show": {
-          "resource": "PositionResource"
-        },
-        "create": {
-          "resource": "PositionResource"
-        },
-        "update": {
-          "resource": "PositionResource"
-        },
-        "destroy": {
-          "resource": "PositionResource"
-        }
-      }
-    },
-    "/api/v1/departments": {
-      "actions": {
-        "index": {
-          "resource": "DepartmentResource"
-        },
-        "show": {
-          "resource": "DepartmentResource"
-        },
-        "create": {
-          "resource": "DepartmentResource"
-        },
-        "update": {
-          "resource": "DepartmentResource"
-        },
-        "destroy": {
-          "resource": "DepartmentResource"
-        }
-      }
-    },
     "/api/v1/teams": {
       "actions": {
         "index": {
@@ -1177,50 +1284,16 @@
           "resource": "TeamResource"
         }
       }
-    },
-    "/api/v1/notes": {
-      "actions": {
-        "index": {
-          "resource": "NoteResource"
-        },
-        "show": {
-          "resource": "NoteResource"
-        },
-        "create": {
-          "resource": "NoteResource"
-        },
-        "update": {
-          "resource": "NoteResource"
-        },
-        "destroy": {
-          "resource": "NoteResource"
-        }
-      }
-    },
-    "/api/v1/milestones": {
-      "actions": {
-        "index": {
-          "resource": "MilestoneResource"
-        },
-        "show": {
-          "resource": "MilestoneResource"
-        },
-        "create": {
-          "resource": "MilestoneResource"
-        },
-        "update": {
-          "resource": "MilestoneResource"
-        },
-        "destroy": {
-          "resource": "MilestoneResource"
-        }
-      }
     }
   },
   "types": {
     "integer_id": {
       "kind": "scalar",
       "description": "Base Type. Query/persist as integer, render as string."
+    },
+    "uuid": {
+      "kind": "scalar",
+      "description": "Base Type. Like a normal string, but by default only eq/!eq and case-sensitive."
     },
     "string": {
       "kind": "scalar",
@@ -1259,6 +1332,10 @@
       "description": "Base Type."
     },
     "array_of_integer_ids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_uuids": {
       "kind": "array",
       "description": "Base Type."
     },
