@@ -189,7 +189,34 @@ RSpec.describe EmployeeResource, type: :resource do
   end
 
   describe 'sideloading' do
-    let!(:employee) { create(:employee) }
+    describe 'departments' do
+      let!(:employee) { create(:employee) }
+      let!(:position1) do
+        create :position,
+          historical_index: 2,
+          employee: employee,
+          department: department1
+      end
+      let!(:position2) do
+        create :position,
+          historical_index: 1,
+          employee: employee,
+          department: department2
+      end
+      let!(:department1) { create(:department) }
+      let!(:department2) { create(:department) }
+
+      before do
+        params[:include] = 'departments'
+      end
+
+      it 'finds the departments for all positions' do
+        render
+        sl = d[0].sideload(:departments)
+        expect(sl.map(&:id)).to eq([department1.id, department2.id])
+        expect(sl.map(&:jsonapi_type).uniq).to eq(['departments'])
+      end
+    end
 
     describe 'current_position' do
       let!(:pos1) do

@@ -6,6 +6,14 @@ class EmployeeResource < ApplicationResource
   attribute :updated_at, :datetime, writable: false
   attribute :title, :string, only: [:filterable, :sortable]
 
+  has_many :departments do
+    assign_each do |employee, departments|
+      departments.select do |d|
+        employee.id.in?(d.positions.map(&:employee_id).flatten)
+      end
+    end
+  end
+
   has_many :positions
   has_many :tasks
   many_to_many :teams
