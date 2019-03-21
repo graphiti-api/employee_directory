@@ -16,6 +16,7 @@ class EmployeeResource < ApplicationResource
     end
   end
 
+  filter :email, :string
   filter :title, only: [:eq] do
     eq do |scope, value|
       scope.joins(:current_position).merge(Position.where(title: value))

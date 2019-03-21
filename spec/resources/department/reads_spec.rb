@@ -65,6 +65,25 @@ RSpec.describe DepartmentResource, type: :resource do
   end
 
   describe 'sideloading' do
-    # ... your tests ...
+    describe 'watchers' do
+      let!(:employee1) { create(:employee) }
+      let!(:employee2) { create(:employee) }
+      let!(:employee3) { create(:employee) }
+      let!(:department) do
+        create :department,
+          watcher_emails: [employee1.email, employee3.email]
+      end
+
+      before do
+        params[:include] = 'watchers'
+      end
+
+      it 'sideloads employees via watcher_emails' do
+        render
+        sl = d[0].sideload(:watchers)
+        expect(sl.map(&:id)).to eq([employee1.id, employee3.id])
+        expect(sl.map(&:jsonapi_type).uniq).to eq(['employees'])
+      end
+    end
   end
 end
