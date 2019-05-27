@@ -31,9 +31,10 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include GraphitiSpecHelpers::RSpec
   config.include GraphitiSpecHelpers::Sugar
+  config.include Graphiti::Rails::TestHelpers
 
   config.before :each do
-    GraphitiErrors.disable!
+    handle_request_exceptions(false)
   end
 
   # bootstrap database cleaner
