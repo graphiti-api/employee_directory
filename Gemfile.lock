@@ -137,6 +137,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     puma (3.12.1)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -231,6 +232,7 @@ DEPENDENCIES
   kaminari (~> 1.0)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
+  rack-cors
   rails (~> 5.2.1)
   responders (~> 2.4)
   rspec-rails (~> 3.5.2)
@@ -244,4 +246,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
