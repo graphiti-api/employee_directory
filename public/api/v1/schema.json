@@ -173,9 +173,9 @@
       "description": null,
       "attributes": {
         "id": {
-          "type": "integer_id",
+          "type": "integer",
           "readable": true,
-          "writable": true,
+          "writable": false,
           "description": null
         },
         "first_name": {
@@ -231,7 +231,7 @@
       },
       "filters": {
         "id": {
-          "type": "integer_id",
+          "type": "integer",
           "operators": [
             "eq",
             "not_eq",
@@ -1023,7 +1023,7 @@
           ]
         },
         "employee_id": {
-          "type": "integer_id",
+          "type": "integer",
           "operators": [
             "eq",
             "not_eq",

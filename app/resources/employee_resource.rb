@@ -1,4 +1,5 @@
 class EmployeeResource < ApplicationResource
+  attribute :id, :integer, writable: false
   attribute :first_name, :string
   attribute :last_name, :string
   attribute :age, :integer

@@ -15,8 +15,8 @@ RSpec.describe PositionResource, type: :resource do
           relationships: {
             employee: {
               data: {
-                id: employee.id.to_s,
-                type: 'employees'
+                type: 'employees',
+                method: 'create'
               }
             },
             department: {
@@ -26,7 +26,10 @@ RSpec.describe PositionResource, type: :resource do
               }
             }
           }
-        }
+        },
+        included: [
+          { type: 'employees', attributes: { first_name: 'asdf' } }
+        ]
       }
     end
 
@@ -39,9 +42,7 @@ RSpec.describe PositionResource, type: :resource do
         expect(instance.save).to eq(true)
       }.to change { Position.count }.by(1)
       position = Position.last
-      expect(position.historical_index).to eq(1)
-      expect(most_recent.reload.historical_index).to eq(2)
-      expect(least_recent.reload.historical_index).to eq(3)
+      expect(position.employee).to_not be_nil
     end
   end
 
