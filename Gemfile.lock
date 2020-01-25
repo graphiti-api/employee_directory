@@ -47,6 +47,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     database_cleaner (1.7.0)
@@ -135,6 +136,9 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     puma (3.12.1)
     rack (2.0.7)
     rack-cors (1.0.3)
@@ -231,6 +235,7 @@ DEPENDENCIES
   graphiti_spec_helpers
   kaminari (~> 1.0)
   listen (>= 3.0.5, < 3.2)
+  pry
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.1)
@@ -246,4 +251,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.16.6
+   1.17.3

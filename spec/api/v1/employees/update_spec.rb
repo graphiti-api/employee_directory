@@ -28,4 +28,37 @@ RSpec.describe "employees#update", type: :request do
       expect(response.status).to eq(200)
     end
   end
+
+  describe 'adding an invalid position when already pre-existing positions' do
+    let!(:employee) { create(:employee, age: 20) }
+    let!(:pos1) { create(:position, employee: employee) }
+
+    let(:payload) do
+      {
+        data: {
+          id: employee.id.to_s,
+          type: 'employees',
+          relationships: {
+            positions: {
+              data: [
+                { type: 'positions', :'temp-id' => 'abc123', method: 'create' }
+              ]
+            }
+          }
+        },
+        included: [
+          {
+            type: 'positions',
+            :'temp-id' => 'abc123',
+            attributes: {}
+          }
+        ]
+      }
+    end
+
+    it 'works' do
+      make_request
+      binding.pry
+    end
+  end
 end
