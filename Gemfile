@@ -47,7 +47,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'graphiti', '~> 1.2'
 gem 'graphiti-rails', '~> 0.2'
 gem 'vandal_ui', '~> 0.4'
-gem 'kaminari', '~> 1.0'
+gem 'kaminari', '~> 1.2'
 gem 'responders', '~> 2.4'
 group :development, :test do
   gem 'rspec-rails', '~> 3.5.2'
