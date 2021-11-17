@@ -1,24 +1,9 @@
-# README
+# Employee Directory
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a sample application demonstrating [Graphiti](https://github.com/graphiti-api/graphiti).
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - Run `bin/setup`.
+ - `rails server`
+ - Visit `/api/v1/vandal`.
