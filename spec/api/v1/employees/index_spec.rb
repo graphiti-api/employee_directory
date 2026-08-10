@@ -15,8 +15,8 @@ RSpec.describe "employees#index", type: :request do
       expect(EmployeeResource).to receive(:all).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.map(&:jsonapi_type).uniq).to match_array(['employees'])
-      expect(d.map(&:id)).to match_array([employee1.id, employee2.id])
+      expect(jsonapi_data.map(&:jsonapi_type).uniq).to match_array(['employees'])
+      expect(jsonapi_data.map(&:id)).to match_array([employee1.id, employee2.id])
     end
   end
 end

@@ -15,8 +15,8 @@ RSpec.describe "milestones#index", type: :request do
       expect(MilestoneResource).to receive(:all).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.map(&:jsonapi_type).uniq).to match_array(['milestones'])
-      expect(d.map(&:id)).to match_array([milestone1.id, milestone2.id])
+      expect(jsonapi_data.map(&:jsonapi_type).uniq).to match_array(['milestones'])
+      expect(jsonapi_data.map(&:id)).to match_array([milestone1.id, milestone2.id])
     end
   end
 end

@@ -1,12 +1,18 @@
 class TasksController < ApplicationController
   def index
     tasks = TaskResource.all(params)
-    respond_with(tasks)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: tasks }
+      format.json { render json: tasks }
+    end
   end
 
   def show
     task = TaskResource.find(params)
-    respond_with(task)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: task }
+      format.json { render json: task }
+    end
   end
 
   def create

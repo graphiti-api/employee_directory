@@ -1,12 +1,18 @@
 class PositionsController < ApplicationController
   def index
     positions = PositionResource.all(params)
-    respond_with(positions)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: positions }
+      format.json { render json: positions }
+    end
   end
 
   def show
     position = PositionResource.find(params)
-    respond_with(position)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: position }
+      format.json { render json: position }
+    end
   end
 
   def create

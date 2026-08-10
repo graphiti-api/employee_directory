@@ -14,8 +14,8 @@ RSpec.describe "notes#show", type: :request do
       expect(NoteResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('notes')
-      expect(d.id).to eq(note.id)
+      expect(jsonapi_data.jsonapi_type).to eq('notes')
+      expect(jsonapi_data.id).to eq(note.id)
     end
   end
 end

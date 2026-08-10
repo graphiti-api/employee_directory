@@ -1,12 +1,18 @@
 class EmployeesController < ApplicationController
   def index
     employees = EmployeeResource.all(params)
-    respond_with(employees)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: employees }
+      format.json { render json: employees }
+    end
   end
 
   def show
     employee = EmployeeResource.find(params)
-    respond_with(employee)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: employee }
+      format.json { render json: employee }
+    end
   end
 
   def create

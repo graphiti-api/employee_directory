@@ -14,8 +14,8 @@ RSpec.describe "employees#show", type: :request do
       expect(EmployeeResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('employees')
-      expect(d.id).to eq(employee.id)
+      expect(jsonapi_data.jsonapi_type).to eq('employees')
+      expect(jsonapi_data.id).to eq(employee.id)
     end
   end
 end

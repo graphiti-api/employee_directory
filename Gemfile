@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.7'
+ruby '~> 3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 8.0.2'
@@ -44,18 +44,21 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'graphiti'
-gem 'graphiti-rails'
+# Graphiti's CI runs this app's suite against the gem source under test by
+# setting GRAPHITI_PATH to its checkout.
+if ENV['GRAPHITI_PATH']
+  gem 'graphiti', path: ENV['GRAPHITI_PATH']
+else
+  gem 'graphiti', '~> 2.0.0.beta'
+end
 gem 'vandal_ui'
 gem 'kaminari'
-gem 'responders'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'graphiti_spec_helpers'
 end
 
 group :test do
-  gem 'database_cleaner', '~> 1.6'
+  gem 'database_cleaner-active_record', '~> 2.2'
 end

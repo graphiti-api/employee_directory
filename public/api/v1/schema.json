@@ -3,6 +3,7 @@
     {
       "name": "BugResource",
       "type": "bugs",
+      "graphql_entrypoint": "bugs",
       "description": null,
       "attributes": {
         "id": {
@@ -80,24 +81,26 @@
         "employee": {
           "type": "belongs_to",
           "description": null,
-          "resource": "EmployeeResource"
+          "resource": "EmployeeResource",
+          "linkage": true
         },
         "team": {
           "type": "belongs_to",
           "description": null,
-          "resource": "TeamResource"
+          "resource": "TeamResource",
+          "linkage": true
         }
       },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
     },
     {
       "name": "DepartmentResource",
       "type": "departments",
+      "graphql_entrypoint": "departments",
       "description": null,
       "attributes": {
         "id": {
@@ -165,11 +168,17 @@
           "description": null,
           "resource": "NoteResource"
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     },
     {
       "name": "EmployeeResource",
       "type": "employees",
+      "graphql_entrypoint": "employees",
       "description": null,
       "attributes": {
         "id": {
@@ -348,11 +357,17 @@
           "description": null,
           "resource": "PositionResource"
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     },
     {
       "name": "EpicResource",
       "type": "epics",
+      "graphql_entrypoint": "epics",
       "description": null,
       "attributes": {
         "id": {
@@ -430,12 +445,14 @@
         "employee": {
           "type": "belongs_to",
           "description": null,
-          "resource": "EmployeeResource"
+          "resource": "EmployeeResource",
+          "linkage": true
         },
         "team": {
           "type": "belongs_to",
           "description": null,
-          "resource": "TeamResource"
+          "resource": "TeamResource",
+          "linkage": true
         },
         "milestones": {
           "type": "has_many",
@@ -443,16 +460,16 @@
           "resource": "MilestoneResource"
         }
       },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
     },
     {
       "name": "FeatureResource",
       "type": "features",
+      "graphql_entrypoint": "features",
       "description": null,
       "attributes": {
         "id": {
@@ -549,24 +566,26 @@
         "employee": {
           "type": "belongs_to",
           "description": null,
-          "resource": "EmployeeResource"
+          "resource": "EmployeeResource",
+          "linkage": true
         },
         "team": {
           "type": "belongs_to",
           "description": null,
-          "resource": "TeamResource"
+          "resource": "TeamResource",
+          "linkage": true
         }
       },
-      "polymorphic": true,
-      "children": [
-        "FeatureResource",
-        "BugResource",
-        "EpicResource"
-      ]
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
     },
     {
       "name": "MilestoneResource",
       "type": "milestones",
+      "graphql_entrypoint": "milestones",
       "description": null,
       "attributes": {
         "id": {
@@ -635,11 +654,17 @@
           "description": null,
           "resource": "EpicResource"
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     },
     {
       "name": "NoteResource",
       "type": "notes",
+      "graphql_entrypoint": "notes",
       "description": null,
       "attributes": {
         "id": {
@@ -730,13 +755,20 @@
             "EmployeeResource",
             "TeamResource",
             "DepartmentResource"
-          ]
+          ],
+          "parent_resource": "NoteResource"
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     },
     {
       "name": "PositionResource",
       "type": "positions",
+      "graphql_entrypoint": "positions",
       "description": null,
       "attributes": {
         "id": {
@@ -854,18 +886,26 @@
         "employee": {
           "type": "belongs_to",
           "description": null,
-          "resource": "EmployeeResource"
+          "resource": "EmployeeResource",
+          "linkage": true
         },
         "department": {
           "type": "belongs_to",
           "description": null,
-          "resource": "DepartmentResource"
+          "resource": "DepartmentResource",
+          "linkage": true
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     },
     {
       "name": "TaskResource",
       "type": "tasks",
+      "graphql_entrypoint": "tasks",
       "description": null,
       "attributes": {
         "id": {
@@ -943,13 +983,20 @@
         "employee": {
           "type": "belongs_to",
           "description": null,
-          "resource": "EmployeeResource"
+          "resource": "EmployeeResource",
+          "linkage": true
         },
         "team": {
           "type": "belongs_to",
           "description": null,
-          "resource": "TeamResource"
+          "resource": "TeamResource",
+          "linkage": true
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       },
       "polymorphic": true,
       "children": [
@@ -961,6 +1008,7 @@
     {
       "name": "TeamResource",
       "type": "teams",
+      "graphql_entrypoint": "teams",
       "description": null,
       "attributes": {
         "id": {
@@ -1038,7 +1086,8 @@
         "department": {
           "type": "belongs_to",
           "description": null,
-          "resource": "DepartmentResource"
+          "resource": "DepartmentResource",
+          "linkage": true
         },
         "employees": {
           "type": "many_to_many",
@@ -1055,6 +1104,11 @@
           "description": null,
           "resource": "NoteResource"
         }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
       }
     }
   ],
@@ -1194,35 +1248,51 @@
     }
   },
   "types": {
-    "integer_id": {
-      "kind": "scalar",
-      "description": "Base Type. Query/persist as integer, render as string."
-    },
-    "uuid": {
-      "kind": "scalar",
-      "description": "Base Type. Like a normal string, but by default only eq/!eq and case-sensitive."
-    },
-    "string_enum": {
-      "kind": "scalar",
-      "description": "String enum type. Like a normal string, but only eq/!eq and case-sensitive. Limited to only the allowed values."
-    },
-    "integer_enum": {
-      "kind": "scalar",
-      "description": "Integer enum type. Like a normal integer, but only eq/!eq filters. Limited to only the allowed values."
-    },
-    "string": {
-      "kind": "scalar",
+    "array": {
+      "kind": "array",
       "description": "Base Type."
     },
-    "integer": {
-      "kind": "scalar",
+    "array_of_big_decimals": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_dates": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_datetimes": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_floats": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integer_enums": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integer_ids": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_integers": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_string_enums": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_strings": {
+      "kind": "array",
+      "description": "Base Type."
+    },
+    "array_of_uuids": {
+      "kind": "array",
       "description": "Base Type."
     },
     "big_decimal": {
-      "kind": "scalar",
-      "description": "Base Type."
-    },
-    "float": {
       "kind": "scalar",
       "description": "Base Type."
     },
@@ -1238,53 +1308,37 @@
       "kind": "scalar",
       "description": "Base Type."
     },
+    "float": {
+      "kind": "scalar",
+      "description": "Base Type."
+    },
     "hash": {
       "kind": "record",
       "description": "Base Type."
     },
-    "array": {
-      "kind": "array",
+    "integer": {
+      "kind": "scalar",
       "description": "Base Type."
     },
-    "array_of_integer_ids": {
-      "kind": "array",
+    "integer_enum": {
+      "kind": "scalar",
+      "description": "Integer enum type. Like a normal integer, but only eq/!eq filters. Limited to only the allowed values."
+    },
+    "integer_id": {
+      "kind": "scalar",
+      "description": "Base Type. Query/persist as integer, render as string."
+    },
+    "string": {
+      "kind": "scalar",
       "description": "Base Type."
     },
-    "array_of_uuids": {
-      "kind": "array",
-      "description": "Base Type."
+    "string_enum": {
+      "kind": "scalar",
+      "description": "String enum type. Like a normal string, but only eq/!eq and case-sensitive. Limited to only the allowed values."
     },
-    "array_of_string_enums": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_integer_enums": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_strings": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_integers": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_big_decimals": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_floats": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_dates": {
-      "kind": "array",
-      "description": "Base Type."
-    },
-    "array_of_datetimes": {
-      "kind": "array",
-      "description": "Base Type."
+    "uuid": {
+      "kind": "scalar",
+      "description": "Base Type. Like a normal string, but by default only eq/!eq and case-sensitive."
     }
   }
 }

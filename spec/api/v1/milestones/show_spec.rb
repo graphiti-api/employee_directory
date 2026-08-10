@@ -14,8 +14,8 @@ RSpec.describe "milestones#show", type: :request do
       expect(MilestoneResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('milestones')
-      expect(d.id).to eq(milestone.id)
+      expect(jsonapi_data.jsonapi_type).to eq('milestones')
+      expect(jsonapi_data.id).to eq(milestone.id)
     end
   end
 end

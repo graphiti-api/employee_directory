@@ -24,7 +24,7 @@ RSpec.describe TaskResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([task2.id])
+        expect(jsonapi_data.map(&:id)).to eq([task2.id])
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe TaskResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             task1.id,
             task2.id
           ])
@@ -55,7 +55,7 @@ RSpec.describe TaskResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             task2.id,
             task1.id
           ])

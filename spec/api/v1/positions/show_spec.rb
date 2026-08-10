@@ -14,8 +14,8 @@ RSpec.describe "positions#show", type: :request do
       expect(PositionResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('positions')
-      expect(d.id).to eq(position.id)
+      expect(jsonapi_data.jsonapi_type).to eq('positions')
+      expect(jsonapi_data.id).to eq(position.id)
     end
   end
 end

@@ -1,12 +1,18 @@
 class MilestonesController < ApplicationController
   def index
     milestones = MilestoneResource.all(params)
-    respond_with(milestones)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: milestones }
+      format.json { render json: milestones }
+    end
   end
 
   def show
     milestone = MilestoneResource.find(params)
-    respond_with(milestone)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: milestone }
+      format.json { render json: milestone }
+    end
   end
 
   def create

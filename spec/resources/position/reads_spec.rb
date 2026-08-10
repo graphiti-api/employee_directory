@@ -32,7 +32,7 @@ RSpec.describe PositionResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([position2.id])
+        expect(jsonapi_data.map(&:id)).to eq([position2.id])
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe PositionResource, type: :resource do
 
       it 'only returns positions where historical index == 1' do
         render
-        expect(d.map(&:id)).to eq([position2.id])
+        expect(jsonapi_data.map(&:id)).to eq([position2.id])
       end
     end
   end
@@ -63,7 +63,7 @@ RSpec.describe PositionResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             position1.id,
             position2.id
           ])
@@ -77,7 +77,7 @@ RSpec.describe PositionResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             position2.id,
             position1.id
           ])

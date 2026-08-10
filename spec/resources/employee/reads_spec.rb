@@ -20,8 +20,8 @@ RSpec.describe EmployeeResource, type: :resource do
       expect(data.first_name).to eq('jane')
       expect(data.last_name).to eq('doe')
       expect(data.age).to eq(40)
-      expect(data.created_at).to eq(datetime(employee.created_at))
-      expect(data.updated_at).to eq(datetime(employee.updated_at))
+      expect(data.created_at).to eq(json_datetime(employee.created_at))
+      expect(data.updated_at).to eq(json_datetime(employee.updated_at))
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([employee2.id])
+        expect(jsonapi_data.map(&:id)).to eq([employee2.id])
       end
     end
 
@@ -71,7 +71,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
       it 'returns employees who have a current position with the given title' do
         render
-        expect(d.map(&:id)).to eq([employee2.id])
+        expect(jsonapi_data.map(&:id)).to eq([employee2.id])
       end
     end
   end
@@ -88,7 +88,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             employee1.id,
             employee2.id
           ])
@@ -102,7 +102,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             employee2.id,
             employee1.id
           ])
@@ -126,7 +126,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([employee2.id, employee1.id])
+          expect(jsonapi_data.map(&:id)).to eq([employee2.id, employee1.id])
         end
       end
 
@@ -137,7 +137,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([employee1.id, employee2.id])
+          expect(jsonapi_data.map(&:id)).to eq([employee1.id, employee2.id])
         end
       end
     end
@@ -171,7 +171,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([employee2.id, employee1.id])
+          expect(jsonapi_data.map(&:id)).to eq([employee2.id, employee1.id])
         end
       end
 
@@ -182,7 +182,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([employee1.id, employee2.id])
+          expect(jsonapi_data.map(&:id)).to eq([employee1.id, employee2.id])
         end
       end
     end
@@ -205,7 +205,7 @@ RSpec.describe EmployeeResource, type: :resource do
 
       it 'returns position with historical index == 1' do
         render
-        sl = d[0].sideload(:current_position)
+        sl = jsonapi_data[0].sideload(:current_position)
         expect(sl.jsonapi_type).to eq('positions')
         expect(sl.id).to eq(pos2.id)
       end

@@ -1,12 +1,18 @@
 class NotesController < ApplicationController
   def index
     notes = NoteResource.all(params)
-    respond_with(notes)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: notes }
+      format.json { render json: notes }
+    end
   end
 
   def show
     note = NoteResource.find(params)
-    respond_with(note)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: note }
+      format.json { render json: note }
+    end
   end
 
   def create

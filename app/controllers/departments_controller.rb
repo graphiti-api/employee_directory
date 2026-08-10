@@ -1,12 +1,18 @@
 class DepartmentsController < ApplicationController
   def index
     departments = DepartmentResource.all(params)
-    respond_with(departments)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: departments }
+      format.json { render json: departments }
+    end
   end
 
   def show
     department = DepartmentResource.find(params)
-    respond_with(department)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: department }
+      format.json { render json: department }
+    end
   end
 
   def create

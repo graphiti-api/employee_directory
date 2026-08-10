@@ -24,7 +24,7 @@ RSpec.describe DepartmentResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([department2.id])
+        expect(jsonapi_data.map(&:id)).to eq([department2.id])
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe DepartmentResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             department1.id,
             department2.id
           ])
@@ -55,7 +55,7 @@ RSpec.describe DepartmentResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             department2.id,
             department1.id
           ])

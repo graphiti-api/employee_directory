@@ -14,8 +14,8 @@ RSpec.describe "departments#show", type: :request do
       expect(DepartmentResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('departments')
-      expect(d.id).to eq(department.id)
+      expect(jsonapi_data.jsonapi_type).to eq('departments')
+      expect(jsonapi_data.id).to eq(department.id)
     end
   end
 end

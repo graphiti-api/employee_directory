@@ -5,7 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
-require 'graphiti_spec_helpers/rspec'
+require 'graphiti/spec_helpers/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -29,8 +29,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  config.include GraphitiSpecHelpers::RSpec
-  config.include GraphitiSpecHelpers::Sugar
+  config.include Graphiti::SpecHelpers::RSpec
   config.include Graphiti::Rails::TestHelpers
 
   config.before :each do
@@ -82,4 +81,4 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-GraphitiSpecHelpers::RSpec.schema!
+Graphiti::SpecHelpers::RSpec.schema!

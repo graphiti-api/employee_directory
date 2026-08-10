@@ -15,8 +15,8 @@ RSpec.describe "departments#index", type: :request do
       expect(DepartmentResource).to receive(:all).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.map(&:jsonapi_type).uniq).to match_array(['departments'])
-      expect(d.map(&:id)).to match_array([department1.id, department2.id])
+      expect(jsonapi_data.map(&:jsonapi_type).uniq).to match_array(['departments'])
+      expect(jsonapi_data.map(&:id)).to match_array([department1.id, department2.id])
     end
   end
 end

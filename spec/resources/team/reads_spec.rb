@@ -24,7 +24,7 @@ RSpec.describe TeamResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([team2.id])
+        expect(jsonapi_data.map(&:id)).to eq([team2.id])
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe TeamResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             team1.id,
             team2.id
           ])
@@ -55,7 +55,7 @@ RSpec.describe TeamResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             team2.id,
             team1.id
           ])

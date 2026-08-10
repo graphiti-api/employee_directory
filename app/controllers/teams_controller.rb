@@ -1,12 +1,18 @@
 class TeamsController < ApplicationController
   def index
     teams = TeamResource.all(params)
-    respond_with(teams)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: teams }
+      format.json { render json: teams }
+    end
   end
 
   def show
     team = TeamResource.find(params)
-    respond_with(team)
+    respond_to do |format|
+      format.jsonapi { render jsonapi: team }
+      format.json { render json: team }
+    end
   end
 
   def create

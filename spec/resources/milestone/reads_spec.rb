@@ -24,7 +24,7 @@ RSpec.describe MilestoneResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([milestone2.id])
+        expect(jsonapi_data.map(&:id)).to eq([milestone2.id])
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe MilestoneResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             milestone1.id,
             milestone2.id
           ])
@@ -55,7 +55,7 @@ RSpec.describe MilestoneResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             milestone2.id,
             milestone1.id
           ])

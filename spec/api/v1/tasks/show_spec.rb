@@ -14,8 +14,8 @@ RSpec.describe "tasks#show", type: :request do
       expect(TaskResource).to receive(:find).and_call_original
       make_request
       expect(response.status).to eq(200)
-      expect(d.jsonapi_type).to eq('features')
-      expect(d.id).to eq(task.id)
+      expect(jsonapi_data.jsonapi_type).to eq('features')
+      expect(jsonapi_data.id).to eq(task.id)
     end
   end
 end

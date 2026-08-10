@@ -24,7 +24,7 @@ RSpec.describe NoteResource, type: :resource do
 
       it 'works' do
         render
-        expect(d.map(&:id)).to eq([note2.id])
+        expect(jsonapi_data.map(&:id)).to eq([note2.id])
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe NoteResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             note1.id,
             note2.id
           ])
@@ -55,7 +55,7 @@ RSpec.describe NoteResource, type: :resource do
 
         it 'works' do
           render
-          expect(d.map(&:id)).to eq([
+          expect(jsonapi_data.map(&:id)).to eq([
             note2.id,
             note1.id
           ])
